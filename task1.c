@@ -14,6 +14,9 @@ struct Student{
     float cg;
 };
 
+
+
+
 int isValidID(char id[]){
     int i;
     for(i=0;id[i];i++){
@@ -36,6 +39,28 @@ int isValidName(char name[]){
     int i;
     for(i=0;name[i];i++)
         if(!isalpha(name[i])) return 0;
+    return 1;
+}
+
+
+int readStudent(FILE *fp, struct Student *s, struct Student list[], int cnt){
+    int i;
+
+    if(fscanf(fp,"%s %s",s->id,s->name)==EOF)
+        return 0;
+
+    if(!isValidID(s->id) || !isUniqueID(list,cnt,s->id))
+        return -1;
+
+    if(!isValidName(s->name))
+        return -1;
+
+    for(i=0;i<5;i++){
+        fscanf(fp,"%d",&s->m[i]);
+        if(s->m[i]<0 || s->m[i]>100)
+            return -1;
+    }
+
     return 1;
 }
 
@@ -143,31 +168,90 @@ void stats(struct Student s[],int n){
     printf("O:%d A+:%d A:%d B+:%d B:%d C:%d D:%d F:%d\n",
            gc[0],gc[1],gc[2],gc[3],gc[4],gc[5],gc[6],gc[7]);
 }
+void printAll(FILE *fp,struct Student s[],int n){
+    int i,j;
+    float sum=0,hi=s[0].percent,lo=s[0].percent;
+    int gc[8]={0};
+
+    printf("\nID\tName\tMarks\t\tT\t%%\tGrade\tCG\n");
+    fprintf(fp,"ID\tName\tMarks\t\tT\t%%\tGrade\tCG\n");
+
+    for(i=0;i<n;i++){
+        printf("%s\t%s\t",s[i].id,s[i].name);
+        fprintf(fp,"%s\t%s\t",s[i].id,s[i].name);
+
+        for(j=0;j<5;j++){
+            printf("%d ",s[i].m[j]);
+            fprintf(fp,"%d ",s[i].m[j]);
+        }
+
+        printf("\t%d\t%.2f\t%s\t%.1f\n",
+               s[i].t,s[i].percent,s[i].grade,s[i].cg);
+
+        fprintf(fp,"\t%d\t%.2f\t%s\t%.1f\n",
+                s[i].t,s[i].percent,s[i].grade,s[i].cg);
+
+        sum+=s[i].percent;
+        if(s[i].percent>hi) hi=s[i].percent;
+        if(s[i].percent<lo) lo=s[i].percent;
+
+        if(strcmp(s[i].grade,"O")==0) gc[0]++;
+        else if(strcmp(s[i].grade,"A+")==0) gc[1]++;
+        else if(strcmp(s[i].grade,"A")==0) gc[2]++;
+        else if(strcmp(s[i].grade,"B+")==0) gc[3]++;
+        else if(strcmp(s[i].grade,"B")==0) gc[4]++;
+        else if(strcmp(s[i].grade,"C")==0) gc[5]++;
+        else if(strcmp(s[i].grade,"D")==0) gc[6]++;
+        else gc[7]++;
+    }
+
+    printf("\nClass Avg: %.2f%%",sum/n);
+    printf("\nHighest %%: %.2f",hi);
+    printf("\nLowest %%: %.2f\n",lo);
+
+    fprintf(fp,"\nClass Avg: %.2f%%",sum/n);
+    fprintf(fp,"\nHighest %%: %.2f",hi);
+    fprintf(fp,"\nLowest %%: %.2f\n",lo);
+
+    printf("\nGrade Count:\n");
+    fprintf(fp,"\nGrade Count:\n");
+
+    printf("O:%d A+:%d A:%d B+:%d B:%d C:%d D:%d F:%d\n",
+           gc[0],gc[1],gc[2],gc[3],gc[4],gc[5],gc[6],gc[7]);
+
+    fprintf(fp,"O:%d A+:%d A:%d B+:%d B:%d C:%d D:%d F:%d\n",
+            gc[0],gc[1],gc[2],gc[3],gc[4],gc[5],gc[6],gc[7]);
+}
 
 int main(){
     struct Student s[MAX];
-    int n,i;
-    FILE *fp;
+    int n,i,ok;
+    FILE *fin,*fout;
 
-    printf("Enter number of students: ");
-    scanf("%d",&n);
+    fin=fopen("input.txt","r");
+    if(fin==NULL){
+        printf("Input file not found\n");
+        return 0;
+    }
 
-    fp=fopen("students.dat","wb");
+    fscanf(fin,"%d",&n);
 
     for(i=0;i<n;i++){
-        printf("\nStudent %d\n",i+1);
-        inputStudent(&s[i],s,i);
+        ok = readStudent(fin,&s[i],s,i);
+        if(ok!=1){
+            printf("Invalid record near student %d\n",i+1);
+            i--;
+            continue;
+        }
         calculate(&s[i]);
-        fwrite(&s[i],sizeof(struct Student),1,fp);
     }
-    fclose(fp);
+    fclose(fin);
 
-    fp=fopen("students.dat","rb");
-    fread(s,sizeof(struct Student),n,fp);
-    fclose(fp);
+    fout=fopen("output.txt","w");
+    printAll(fout,s,n);
+    fclose(fout);
 
-    displayReport(s,n);
-    stats(s,n);
-
+    printf("\nOutput also saved in output.txt\n");
     return 0;
 }
+
