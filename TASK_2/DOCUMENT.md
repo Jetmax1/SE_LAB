@@ -2,49 +2,49 @@
 This is a moduder vrsion of the first task. Where i have created a "HEADER FILE" and sevral modules for this to work.
 
 ## HEADER FILE (student.h)
-Module Name ->student.h
-Input->Included by all .c files
-Pre-Condition->Header file to be included.
-Output->Helps in sharing od the module data
+1. Module Name ->student.h
+2. Input->Included by all .c files
+3. Pre-Condition->Header file to be included.
+4. Output->Helps in sharing od the module data
 
 ## MODULE 1(validation.c)
-Module Name->validation.c
-Functions in the Module:
--isValidID()
--isValidName()
--sUniqueID()
-Input:
--tudent ID
--tudent Name
--xisting student list
-Outpu->Returns validity status
+1. Module Name->validation.c
+2. Functions in the Module:
+    -isValidID()
+    -isValidName()
+    -sUniqueID()
+3. Input:
+    -tudent ID
+    -tudent Name
+    -xisting student list
+4. Outpu->Returns validity status
 
 ## MODULE 2(result.c)
--Module Name->result.c
--Functions in the Module:
+1. Module Name->result.c
+2. Functions in the Module:
     -alculate()
     -etGrade()
     -etCGPA()
--Input->Student marks
--Output:
+3. Input->Student marks
+4. Output:
     -otal marks
     -ercentage
     -rade
     -GPA
 
 ## MODULE 3(filehandeling.c)
-Module Name->filehandeling.c
-Functions in the Module:
--eadStudent()
--rintAll()
-Input->input.txt
-Output->output.txt
+1. Module Name->filehandeling.c
+2. Functions in the Module:
+    -eadStudent()
+    -rintAll()
+3. Input->input.txt
+4. Output->output.txt
 
 ## MODULE 3(main.c)
-Module Name->main.c
-Input-> input.txt
-Pre-Condition->All modules must be compiled successfully
-Output->result report
+1. Module Name->main.c
+2. Input-> input.txt
+3. Pre-Condition->All modules must be compiled successfully
+4. Output->result report
 
 # HOW TO USE IT
 
