@@ -10,33 +10,33 @@ This is a moduder vrsion of the first task. Where i have created a "HEADER FILE"
 ## MODULE 1(validation.c)
 1. Module Name->validation.c
 2. Functions in the Module:
-    -isValidID()
-    -isValidName()
-    -sUniqueID()
+    - isValidID()
+    - isValidName()
+    - sUniqueID()
 3. Input:
-    -tudent ID
-    -tudent Name
-    -xisting student list
+    - tudent ID
+    - tudent Name
+    - xisting student list
 4. Outpu->Returns validity status
 
 ## MODULE 2(result.c)
 1. Module Name->result.c
 2. Functions in the Module:
-    -alculate()
-    -etGrade()
-    -etCGPA()
+    - alculate()
+    - etGrade()
+    - etCGPA()
 3. Input->Student marks
 4. Output:
-    -otal marks
-    -ercentage
-    -rade
-    -GPA
+    - otal marks
+    - ercentage
+    - rade
+    - GPA
 
 ## MODULE 3(filehandeling.c)
 1. Module Name->filehandeling.c
 2. Functions in the Module:
-    -eadStudent()
-    -rintAll()
+    - eadStudent()
+    - rintAll()
 3. Input->input.txt
 4. Output->output.txt
 
