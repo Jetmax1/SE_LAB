@@ -14,29 +14,29 @@ This is a moduder vrsion of the first task. Where i have created a "HEADER FILE"
     - isValidName()
     - sUniqueID()
 3. Input:
-    - tudent ID
-    - tudent Name
-    - xisting student list
+    - student ID
+    - student Name
+    - existing student list
 4. Outpu->Returns validity status
 
 ## MODULE 2(result.c)
 1. Module Name->result.c
 2. Functions in the Module:
-    - alculate()
-    - etGrade()
-    - etCGPA()
+    - calculate()
+    - getGrade()
+    - getCGPA()
 3. Input->Student marks
 4. Output:
-    - otal marks
-    - ercentage
-    - rade
+    - total marks
+    - percentage
+    - grade
     - GPA
 
 ## MODULE 3(filehandeling.c)
 1. Module Name->filehandeling.c
 2. Functions in the Module:
-    - eadStudent()
-    - rintAll()
+    - readStudent()
+    - printAll()
 3. Input->input.txt
 4. Output->output.txt
 
