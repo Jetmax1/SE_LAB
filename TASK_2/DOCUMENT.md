@@ -10,33 +10,33 @@ Output->Helps in sharing od the module data
 ## MODULE 1(validation.c)
 Module Name->validation.c
 Functions in the Module:
->isValidID()
->isValidName()
->isUniqueID()
+-isValidID()
+-isValidName()
+-sUniqueID()
 Input:
->Student ID
->Student Name
->Existing student list
+-tudent ID
+-tudent Name
+-xisting student list
 Outpu->Returns validity status
 
 ## MODULE 2(result.c)
 Module Name->result.c
 Functions in the Module:
->calculate()
->getGrade()
->getCGPA()
+-alculate()
+-etGrade()
+-etCGPA()
 Input->Student marks
 Output:
->Total marks
->Percentage
->Grade
->CGPA
+-otal marks
+-ercentage
+-rade
+-GPA
 
 ## MODULE 3(filehandeling.c)
 Module Name->filehandeling.c
 Functions in the Module:
->readStudent()
->printAll()
+-eadStudent()
+-rintAll()
 Input->input.txt
 Output->output.txt
 
@@ -65,3 +65,5 @@ gcc main.c validation.c result.c filehandeling.c -o student
 
 # Test Plan
 Each function is tested with valid and invalid inputs to ensure correct behavior.
+
+I have created a c cile Just to testg if the fuctions are working or not. 
