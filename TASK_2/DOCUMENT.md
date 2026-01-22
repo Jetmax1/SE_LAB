@@ -20,17 +20,17 @@ Input:
 Outpu->Returns validity status
 
 ## MODULE 2(result.c)
-Module Name->result.c
-Functions in the Module:
--alculate()
--etGrade()
--etCGPA()
-Input->Student marks
-Output:
--otal marks
--ercentage
--rade
--GPA
+-Module Name->result.c
+-Functions in the Module:
+    -alculate()
+    -etGrade()
+    -etCGPA()
+-Input->Student marks
+-Output:
+    -otal marks
+    -ercentage
+    -rade
+    -GPA
 
 ## MODULE 3(filehandeling.c)
 Module Name->filehandeling.c
